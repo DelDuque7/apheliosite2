@@ -3,208 +3,127 @@
 <head>
 <meta charset="utf-8">
 <title>Pizza Solidária Post</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Gloock&family=Open+Sans:wght@400;600;700;800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Gloock&family=Open+Sans:wght@400;600;700&display=block" rel="stylesheet">
 <style>
-:root{
-  --black:#0E0204; --wine:#A30E2B; --pink:#DFBBCA; --twilight:#774972; --old:#7C5D72;
-}
+:root{--black:#0E0204;--wine:#A30E2B;--pink:#DFBBCA;--twilight:#774972;--old:#7C5D72}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#222}
-.post{position:relative;width:1080px;height:1350px;overflow:hidden;
-  background:radial-gradient(120% 90% at 50% 45%, #B8132F 0%, var(--wine) 45%, #6E0A1E 100%);
-  font-family:'Open Sans',Arial,sans-serif;color:var(--pink)}
+.post{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--black);color:var(--pink);font-family:'Open Sans',Arial,sans-serif}
 .abs{position:absolute}
-.grain{inset:0;opacity:.18;mix-blend-mode:overlay;pointer-events:none;z-index:50}
+.glow{inset:0;background:radial-gradient(48% 40% at 66% 58%,rgba(163,14,43,.38),rgba(163,14,43,0) 70%),radial-gradient(40% 30% at 10% 95%,rgba(119,73,114,.25),transparent 70%)}
+.label{font-size:17px;font-weight:700;letter-spacing:4px;text-transform:uppercase}
 
-/* giant background wheels */
-.bgwheel{opacity:.55}
-.w1{width:820px;left:-330px;top:-300px;transform:rotate(12deg);opacity:.35}
-.w2{width:900px;right:-420px;bottom:-140px;transform:rotate(-8deg);opacity:.32}
+.head{left:56px;right:56px;top:52px;display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1.5px solid rgba(223,187,202,.35);z-index:5}
+.head .l{display:flex;align-items:center;gap:12px}
+.head img{width:30px}
+.head .r{color:#a88a9d}
 
-/* top label */
-.kicker{top:56px;left:50%;transform:translateX(-50%);z-index:6;display:flex;align-items:center;gap:14px;
-  background:var(--black);padding:12px 26px 12px 16px;border-radius:4px;
-  font-family:'Anton';font-size:34px;letter-spacing:2px;color:var(--pink);white-space:nowrap}
-.kicker img{width:40px;height:40px}
+.h1{left:52px;top:118px;font-family:'Gloock';font-size:188px;line-height:.9;letter-spacing:-5px;z-index:5}
+.h1 span{display:block}
+.h1 .sub{font-size:76px;letter-spacing:-1px;margin-top:14px}
+.h1 .sub i{font-style:normal;color:var(--wine)}
+.kick{left:56px;top:470px;max-width:290px;font-size:21px;line-height:1.45;color:#c9a6b6;z-index:5}
+.kick b{color:var(--pink);font-weight:700}
 
-/* giant hook word */
-.hook{left:0;right:0;text-align:center;font-family:'Anton';color:var(--pink);
-  line-height:.8;letter-spacing:-6px;filter:url(#rough);z-index:2}
-.hook.top{top:118px;font-size:470px}
-.hook.bottom{bottom:150px;font-size:300px;color:var(--twilight);opacity:.55;letter-spacing:0;z-index:1;filter:none}
+.wheel{left:392px;top:318px;width:860px;height:860px;z-index:3}
+.wheel svg{width:100%;height:100%;overflow:visible}
 
-/* pizza */
-.pizza-wrap{left:200px;top:468px;width:700px;height:700px;z-index:4}
-.pizza-wrap svg{width:100%;height:100%;filter:drop-shadow(0 40px 40px rgba(14,2,4,.55))}
+.price{left:52px;top:742px;z-index:6}
+.price .lbl{margin-bottom:14px;color:#c9a6b6}
+.price .row{display:flex;align-items:flex-start;font-family:'Anton';line-height:.82}
+.price .cur{font-family:'Gloock';font-size:44px;margin-top:16px;margin-right:6px}
+.price .num{font-size:236px;letter-spacing:-5px}
+.price .cents{font-size:54px;margin-top:14px;margin-left:4px}
+.price .unit{font-family:'Gloock';font-size:30px;color:#c9a6b6;margin-top:12px}
 
-/* tags */
-.tag{z-index:7;font-family:'Anton';text-transform:uppercase;line-height:1;white-space:nowrap}
-.t1{left:44px;top:588px;background:var(--black);color:var(--pink);font-size:86px;padding:10px 24px 14px;transform:rotate(-4deg)}
-.t2{left:78px;top:700px;background:var(--pink);color:var(--wine);font-size:44px;padding:10px 22px 12px;transform:rotate(-4deg)}
-.t2 em{font-family:'Gloock';font-style:normal;text-transform:none;font-size:46px;color:var(--black)}
+.chip{right:56px;top:140px;z-index:6;display:flex;align-items:center;gap:14px;background:var(--pink);color:var(--black);padding:12px 22px 12px 14px;border-radius:999px}
+.chip img{width:34px}
+.chip span{font-family:'Gloock';font-size:26px;letter-spacing:-.3px}
 
-/* price gear */
-.price{right:26px;top:812px;width:320px;height:320px;z-index:8;transform:rotate(8deg)}
-.price svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 18px 22px rgba(14,2,4,.5))}
-.price .txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--wine);text-align:center}
-.price .s{font-family:'Anton';font-size:30px;letter-spacing:3px;color:var(--black);margin-top:8px}
-.price .v{font-family:'Anton';font-size:128px;line-height:.92;letter-spacing:-2px;display:flex;align-items:flex-start}
-.price .v small{font-size:44px;margin-top:14px;margin-right:4px}
-.price .v sup{font-size:42px;margin-top:14px;margin-left:2px}
-.price .u{font-family:'Gloock';font-size:24px;color:var(--black);margin-top:2px}
-
-/* flying wheels (replacing basil leaves) */
-.fly{z-index:9}
-.f1{width:120px;left:925px;top:470px;transform:rotate(25deg);filter:blur(3px)}
-.f2{width:70px;left:140px;top:860px;transform:rotate(-15deg);filter:blur(1.5px)}
-.f3{width:170px;left:-50px;top:1150px;transform:rotate(40deg);filter:blur(6px);opacity:.9}
-.f4{width:64px;left:760px;top:520px;transform:rotate(10deg);filter:blur(1px)}
-.f5{width:110px;left:860px;top:690px;transform:rotate(-30deg);filter:blur(4px);opacity:.8}
-
-/* support line */
-.support{z-index:7;left:48px;top:968px;text-align:left;font-family:'Gloock';font-size:56px;line-height:1.02;color:var(--pink);
-  text-shadow:0 4px 14px rgba(14,2,4,.6)}
-.support b{display:block;font-family:'Anton';font-weight:400;font-size:30px;letter-spacing:1px;color:var(--black);
-  background:var(--pink);padding:2px 14px 6px;margin-top:8px;text-shadow:none;display:inline-block}
-
-/* footer */
-.footer{left:0;right:0;bottom:0;height:128px;background:var(--black);z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 50px}
-.footer .logo{height:72px}
-.footer .info{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.footer .cta{font-family:'Anton';font-size:40px;color:var(--pink);letter-spacing:1px}
-.footer .contact{display:flex;gap:22px;font-size:20px;font-weight:600;color:var(--pink);opacity:.9}
-.footer .contact span{display:flex;align-items:center;gap:8px}
-.footer .contact i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 3px rgba(223,187,202,.25)}
-.stripe{left:0;right:0;bottom:128px;height:16px;z-index:19;
-  background:repeating-linear-gradient(90deg,var(--pink) 0 22px,var(--twilight) 22px 44px)}
+.foot{left:56px;right:56px;bottom:36px;display:flex;justify-content:space-between;align-items:flex-end;z-index:6}
+.foot .logo{height:58px}
+.foot .c{text-align:right;line-height:1.5}
+.foot .c .label{font-size:15px;color:#a88a9d}
+.foot .c .t{font-family:'Anton';font-size:36px;letter-spacing:1px}
+.rule{left:56px;right:56px;bottom:116px;height:1.5px;background:rgba(223,187,202,.35);z-index:6}
+.grain{inset:0;opacity:.13;mix-blend-mode:screen;pointer-events:none;z-index:40}
 </style>
 </head>
 <body>
 <div class="post" id="post">
+  <div class="abs glow"></div>
 
-  <svg width="0" height="0" style="position:absolute">
-    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="3" seed="7" result="n"/>
-      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -22 15.6" result="m"/>
-      <feComposite in="SourceGraphic" in2="m" operator="in"/>
-    </filter>
-  </svg>
-
-  <img class="abs bgwheel w1" src="assets/wheel-twilight.png" alt="">
-  <img class="abs bgwheel w2" src="assets/wheel-old.png" alt="">
-
-  <div class="abs kicker"><img src="assets/wheel-pink.png" alt="">PROJETO PIZZA SOLIDÁRIA<img src="assets/wheel-pink.png" alt=""></div>
-
-  <div class="abs hook top">PIZZA</div>
-  <div class="abs hook bottom">SOLIDÁRIA</div>
-
-  <div class="abs pizza-wrap" id="pizza"></div>
-
-  <div class="abs tag t1">PRÉ-ASSADA</div>
-  <div class="abs tag t2">É SÓ ASSAR E SERVIR</div>
-
-  <div class="abs price">
-    <svg viewBox="-110 -110 220 220" id="gear"></svg>
-    <div class="txt">
-      <div class="s">POR APENAS</div>
-      <div class="v"><small>R$</small>45<sup>,00</sup></div>
-      <div class="u">a unidade</div>
-    </div>
+  <div class="abs head label">
+    <div class="l"><img src="assets/wheel-pink.png" alt="">Projeto Pizza Solidária</div>
+    <div class="r">Rotaract · Varginha</div>
   </div>
 
-  <div class="abs support">Sua fome<br>faz o bem.<br><b>RENDA PARA AÇÕES SOCIAIS</b></div>
+  <div class="abs h1"><span>Pizza</span><span class="sub">pré-assada<i>.</i></span></div>
+  <div class="abs kick"><b>Leve pra casa, asse e sirva.</b> Cada pizza vendida vira ação social do Rotaract.</div>
 
-  <img class="abs fly f1" src="assets/wheel-pink.png" alt="">
-  <img class="abs fly f2" src="assets/wheel-pink.png" alt="">
-  <img class="abs fly f3" src="assets/wheel-black.png" alt="">
-  <img class="abs fly f4" src="assets/wheel-twilight.png" alt="">
-  <img class="abs fly f5" src="assets/wheel-pink.png" alt="">
+  <div class="abs wheel"><svg id="wheel" viewBox="-470 -470 940 940"></svg></div>
 
-  <div class="abs stripe"></div>
-  <div class="abs footer">
+  <div class="abs price">
+    <div class="label lbl">Por apenas</div>
+    <div class="row"><span class="cur">R$</span><span class="num">45</span><span class="cents">,00</span></div>
+    <div class="unit">a unidade</div>
+  </div>
+
+  <div class="abs chip"><img src="assets/wheel-wine.png" alt=""><span>Cada fatia faz a roda girar.</span></div>
+
+  <div class="abs rule"></div>
+  <div class="abs foot">
     <img class="logo" src="assets/logo-white.png" alt="Rotaract Club de Varginha">
-    <div class="info">
-      <div class="cta">ENCOMENDE JÁ A SUA!</div>
-      <div class="contact"><span><i></i>(35) 00000-0000</span><span><i></i>@rotaractvarginha</span></div>
-    </div>
+    <div class="c"><div class="label">Encomende pelo WhatsApp</div><div class="t">(35) 00000-0000</div></div>
   </div>
 
   <svg class="abs grain" viewBox="0 0 1080 1350" preserveAspectRatio="none">
-    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
     <rect width="100%" height="100%" filter="url(#g)"/>
   </svg>
 </div>
-
 <script>
-// deterministic random
-let s=11;const r=()=>(s=(s*16807)%2147483647)/2147483647;
-const NS='http://www.w3.org/2000/svg';
-
-// Rotary-style gear (24 teeth) for the price seal
-function gearPath(teeth,ro,ri){
-  let d='';const step=Math.PI*2/teeth;
-  for(let i=0;i<teeth;i++){
-    const a=i*step-Math.PI/2;
-    const p=[[a-step*.5,ri],[a-step*.3,ri],[a-step*.2,ro],[a+step*.2,ro],[a+step*.3,ri],[a+step*.5,ri]];
-    p.forEach(([ang,rad],j)=>{d+=(i===0&&j===0?'M':'L')+(Math.cos(ang)*rad).toFixed(2)+' '+(Math.sin(ang)*rad).toFixed(2)});
-  }
-  return d+'Z';
-}
-document.getElementById('gear').innerHTML=
-  `<path d="${gearPath(24,108,94)}" fill="#DFBBCA"/>
-   <circle r="86" fill="none" stroke="#A30E2B" stroke-width="3"/>
-   <circle r="80" fill="none" stroke="#A30E2B" stroke-width="1.2" stroke-dasharray="3 4"/>`;
-
-// Illustrated pizza on a plate
-(function(){
-  const C=390;let g='';
-  g+=`<defs>
-    <radialGradient id="plate" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#2A0A12"/><stop offset=".85" stop-color="#0E0204"/><stop offset="1" stop-color="#1c060b"/></radialGradient>
-    <radialGradient id="crust" cx="50%" cy="45%" r="50%"><stop offset=".86" stop-color="#E8B46A"/><stop offset=".93" stop-color="#C98A3F"/><stop offset="1" stop-color="#8C5524"/></radialGradient>
-    <radialGradient id="sauce" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#D23A22"/><stop offset="1" stop-color="#9E1F12"/></radialGradient>
-    <radialGradient id="cheese" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFF1C4"/><stop offset=".65" stop-color="#F7D88E"/><stop offset="1" stop-color="#E2A852"/></radialGradient>
-    <radialGradient id="tomato" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#F0503A"/><stop offset="1" stop-color="#B01E14"/></radialGradient>
-    <filter id="wob" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence baseFrequency=".02" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="18"/></filter>
-    <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
-  </defs>`;
-  // plate with rotary teeth rim
-  g+=`<path d="${gearPath(24,C-4,C-26)}" transform="translate(${C} ${C})" fill="#774972"/>`;
-  g+=`<circle cx="${C}" cy="${C}" r="${C-30}" fill="url(#plate)"/>`;
-  g+=`<circle cx="${C}" cy="${C}" r="${C-48}" fill="none" stroke="#7C5D72" stroke-width="2" stroke-dasharray="2 10" opacity=".7"/>`;
-  // pizza
-  const P=300;
-  g+=`<g filter="url(#wob)"><circle cx="${C}" cy="${C}" r="${P}" fill="url(#crust)"/></g>`;
-  // crust toasted spots
-  for(let i=0;i<70;i++){const a=r()*Math.PI*2,d=P-8-r()*22;g+=`<ellipse cx="${C+Math.cos(a)*d}" cy="${C+Math.sin(a)*d}" rx="${3+r()*7}" ry="${2+r()*4}" transform="rotate(${a*57} ${C+Math.cos(a)*d} ${C+Math.sin(a)*d})" fill="#7A4318" opacity="${.25+r()*.35}"/>`}
-  g+=`<g filter="url(#wob)"><circle cx="${C}" cy="${C}" r="${P-36}" fill="url(#sauce)"/></g>`;
-  // melted cheese layer with sauce peeking through
-  g+=`<g filter="url(#wob)"><circle cx="${C}" cy="${C}" r="${P-58}" fill="url(#cheese)"/></g>`;
-  for(let i=0;i<26;i++){const a=r()*Math.PI*2,d=40+Math.sqrt(r())*(P-110);const x=C+Math.cos(a)*d,y=C+Math.sin(a)*d,rr=8+r()*18;
-    g+=`<ellipse cx="${x}" cy="${y}" rx="${rr}" ry="${rr*(.5+r()*.4)}" fill="#C42F1C" opacity=".85" transform="rotate(${r()*180} ${x} ${y})" filter="url(#soft)"/>`;}
-  for(let i=0;i<40;i++){const a=r()*Math.PI*2,d=Math.sqrt(r())*(P-70);const x=C+Math.cos(a)*d,y=C+Math.sin(a)*d,rr=6+r()*14;
-    g+=`<ellipse cx="${x}" cy="${y}" rx="${rr}" ry="${rr*.6}" fill="#D99A45" opacity="${.25+r()*.35}" filter="url(#soft)"/>`;}
-  for(let i=0;i<30;i++){const a=r()*Math.PI*2,d=Math.sqrt(r())*(P-80);const x=C+Math.cos(a)*d,y=C+Math.sin(a)*d;
-    g+=`<ellipse cx="${x}" cy="${y}" rx="${10+r()*16}" ry="${4+r()*5}" fill="#fff" opacity=".35" filter="url(#soft)"/>`;}
-  // slice cuts
-  for(let i=0;i<4;i++){const a=i*Math.PI/4+.2;g+=`<line x1="${C-Math.cos(a)*(P-6)}" y1="${C-Math.sin(a)*(P-6)}" x2="${C+Math.cos(a)*(P-6)}" y2="${C+Math.sin(a)*(P-6)}" stroke="#6E2A10" stroke-width="3" opacity=".35"/>`}
-  // tomato slices
-  const tom=[[-120,-90],[90,-140],[150,40],[-40,130],[-170,40],[30,-20],[110,160],[-110,-190]];
-  tom.forEach(([dx,dy])=>{const x=C+dx,y=C+dy,rr=30+r()*8;
-    g+=`<circle cx="${x}" cy="${y}" r="${rr}" fill="url(#tomato)"/><circle cx="${x}" cy="${y}" r="${rr-6}" fill="none" stroke="#FF8A6A" stroke-width="2" opacity=".6"/>`;
-    for(let k=0;k<4;k++){const a=k*Math.PI/2+r();g+=`<ellipse cx="${x+Math.cos(a)*rr*.45}" cy="${y+Math.sin(a)*rr*.45}" rx="7" ry="4" transform="rotate(${a*57} ${x+Math.cos(a)*rr*.45} ${y+Math.sin(a)*rr*.45})" fill="#F7D36A" opacity=".85"/>`}
-    g+=`<ellipse cx="${x-rr*.35}" cy="${y-rr*.4}" rx="${rr*.3}" ry="${rr*.14}" fill="#fff" opacity=".35" transform="rotate(-30 ${x} ${y})"/>`;});
-  // olives
-  for(let i=0;i<12;i++){const a=r()*Math.PI*2,d=40+r()*(P-110),x=C+Math.cos(a)*d,y=C+Math.sin(a)*d;g+=`<circle cx="${x}" cy="${y}" r="11" fill="#0E0204"/><circle cx="${x}" cy="${y}" r="4.5" fill="#5a2a1a"/><circle cx="${x-4}" cy="${y-4}" r="2.5" fill="#fff" opacity=".4"/>`}
-  // basil
-  const leaf=(x,y,rot,sz)=>`<g transform="translate(${x} ${y}) rotate(${rot}) scale(${sz})"><path d="M0 0 C 18 -22, 52 -22, 70 0 C 52 22, 18 22, 0 0Z" fill="#2E7D32"/><path d="M4 0 L66 0" stroke="#7CB342" stroke-width="2"/><path d="M0 0 C 18 -22, 52 -22, 70 0" fill="none" stroke="#1B5E20" stroke-width="1.5" opacity=".6"/></g>`;
-  [[-60,-40,20,1],[60,60,-60,.9],[-140,110,140,.85],[40,-200,80,.8],[180,-60,200,.8],[-20,220,-20,.75],[-210,-60,250,.8]].forEach(([dx,dy,a,s2])=>g+=leaf(C+dx,C+dy,a,s2));
-  // oregano specks
-  for(let i=0;i<160;i++){const a=r()*Math.PI*2,d=Math.sqrt(r())*(P-40);g+=`<rect x="${C+Math.cos(a)*d}" y="${C+Math.sin(a)*d}" width="${1.5+r()*2.5}" height="${1.5+r()*2}" fill="#4E5B1E" opacity=".75"/>`}
-  // gloss
-  g+=`<ellipse cx="${C-90}" cy="${C-120}" rx="170" ry="90" fill="#fff" opacity=".07" transform="rotate(-30 ${C} ${C})"/>`;
-  document.getElementById('pizza').innerHTML=`<svg viewBox="0 0 ${C*2} ${C*2}" xmlns="${NS}">${g}</svg>`;
-})();
+let s=29;const r=()=>(s=(s*16807)%2147483647)/2147483647;
+const W='#A30E2B',B='#0E0204',T='#774972',O='#7C5D72';
+function gear(teeth,ro,ri){let d='';const st=Math.PI*2/teeth;
+  for(let i=0;i<teeth;i++){const a=i*st;
+    [[a-st*.5,ri],[a-st*.27,ri],[a-st*.19,ro],[a+st*.19,ro],[a+st*.27,ri],[a+st*.5,ri]].forEach(([g,R],j)=>d+=(i||j?'L':'M')+(Math.cos(g)*R).toFixed(1)+' '+(Math.sin(g)*R).toFixed(1));}
+  return d+'Z';}
+const RO=462, RI=418, RING=392, PZ=372, HUB=78;
+const at=(a,d)=>[Math.cos(a)*d,Math.sin(a)*d];
+let g=`<defs>
+  <clipPath id="pz"><circle r="${PZ}"/></clipPath>
+  <radialGradient id="ch" r="60%"><stop offset="0" stop-color="#F6E6EC"/><stop offset="1" stop-color="#E9CBD7"/></radialGradient>
+  <radialGradient id="sh" r="50%"><stop offset=".8" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  <filter id="wob" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence baseFrequency=".015" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="16"/></filter>
+</defs>
+<g transform="rotate(-8)">
+<circle r="${RO+30}" fill="url(#sh)"/>
+<path d="${gear(24,RO,RI)}" fill="${W}"/>
+<circle r="${RING}" fill="${B}"/>
+<g clip-path="url(#pz)">
+  <circle r="${PZ}" fill="${O}"/>
+  <g filter="url(#wob)"><circle r="${PZ-6}" fill="#C79AAE"/></g>
+  <g filter="url(#wob)"><circle r="${PZ-44}" fill="url(#ch)"/></g>`;
+for(let i=0;i<60;i++){const [x,y]=at(r()*6.283,PZ-12-r()*24);g+=`<circle cx="${x}" cy="${y}" r="${2+r()*5}" fill="${O}" opacity=".55"/>`}
+for(let i=0;i<22;i++){const [x,y]=at(r()*6.283,HUB+30+r()*(PZ-HUB-100));g+=`<ellipse cx="${x}" cy="${y}" rx="${6+r()*14}" ry="${4+r()*7}" fill="${W}" opacity=".35" transform="rotate(${r()*180} ${x} ${y})"/>`}
+// pepperoni placed inside each slice (slices centred on 0°,60°…; cuts at 30°+k·60°)
+const pep=[];
+for(let k=0;k<6;k++){const c=k*Math.PI/3;
+  [[150,0],[245,-.28],[245,.28],[318,-.36],[318,0],[318,.36]].forEach(([d,da])=>{if(r()<.88)pep.push([...at(c+da+(r()-.5)*.06,d+(r()-.5)*14),28+r()*7])});}
+pep.forEach(([x,y,R])=>{g+=`<circle cx="${x}" cy="${y}" r="${R}" fill="${W}"/><circle cx="${x}" cy="${y}" r="${R-6}" fill="none" stroke="#C02145" stroke-width="2"/>`;
+  for(let k=0;k<5;k++){const [dx,dy]=at(r()*6.283,r()*R*.6);g+=`<circle cx="${x+dx}" cy="${y+dy}" r="${1.5+r()*2.5}" fill="#6B0819"/>`}
+  g+=`<ellipse cx="${x-R*.35}" cy="${y-R*.4}" rx="${R*.32}" ry="${R*.12}" fill="#fff" opacity=".22" transform="rotate(-35 ${x} ${y})"/>`});
+for(let k=0;k<6;k++){const c=k*Math.PI/3;[[200,.42],[285,-.12]].forEach(([d,da])=>{const [x,y]=at(c+da,d);g+=`<circle cx="${x}" cy="${y}" r="10" fill="none" stroke="${T}" stroke-width="7"/>`})}
+const leaf=(x,y,rot,k)=>`<g transform="translate(${x} ${y}) rotate(${rot}) scale(${k})"><path d="M0 0C14-17 42-17 56 0 42 17 14 17 0 0Z" fill="${T}"/><path d="M4 0H52" stroke="${O}" stroke-width="2"/></g>`;
+for(let k=0;k<6;k++){const [x,y]=at(k*Math.PI/3-.18,195);g+=leaf(x,y,r()*360,.9)}
+for(let i=0;i<220;i++){const [x,y]=at(r()*6.283,Math.sqrt(r())*(PZ-50));g+=`<rect x="${x}" y="${y}" width="${1.5+r()*2}" height="${1.5+r()*2}" fill="${O}" opacity=".8"/>`}
+g+=`</g>`;
+for(let k=0;k<6;k++){g+=`<rect x="${HUB-10}" y="-11" width="${RING-HUB+10}" height="22" fill="${W}" transform="rotate(${k*60+30})"/>`}
+g+=`<circle r="${RING-1}" fill="none" stroke="${W}" stroke-width="6"/>
+<circle r="${HUB}" fill="${W}"/><circle r="${HUB-30}" fill="${B}"/><rect x="-9" y="${-(HUB-6)}" width="18" height="34" fill="${B}" transform="rotate(30)"/>
+</g>`;
+document.getElementById('wheel').innerHTML=g;
 </script>
 </body>
 </html>
