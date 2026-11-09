@@ -1,0 +1,88 @@
+{
+  "projeto": "Pizza Solidária — Rotaract Club de Varginha",
+  "formato_saida": { "rede": "Instagram feed", "proporcao": "4:5", "px": [1080, 1350] },
+  "referencias": [
+    {
+      "id": "ref-01-pizza-grid",
+      "tipo": "grid de 9 posts de pizzaria (feed 4:5)",
+      "cores_amostradas": ["#FEF7E7", "#086532", "#054B28", "#B53826", "#E0C19E", "#A27447", "#6FAF5A"],
+      "papeis_de_cor": {
+        "fundo_a": "creme #FEF7E7",
+        "fundo_b": "verde #086532",
+        "destaque": "vermelho tomate #B53826",
+        "apoio": "madeira #A27447 (tábua)"
+      },
+      "tipografia": {
+        "display": {
+          "estilo": "sans grotesca ultra-condensada, caixa alta, peso Black, com textura desgastada (grunge)",
+          "equivalentes": ["Anton", "Bebas Neue", "Druk Condensed", "Big Shoulders Display Black"],
+          "uso": "palavra-gancho gigante (PIZZA, DELIVERY, SEXTOU) ocupando 100% da largura, atrás do produto"
+        },
+        "tarjas": {
+          "estilo": "sans condensada bold em caixa alta dentro de tarjas retas, levemente rotacionadas",
+          "equivalentes": ["Oswald SemiBold", "Bebas Neue"]
+        },
+        "rodape": { "estilo": "sans humanista pequena", "equivalentes": ["Open Sans", "Roboto"] }
+      },
+      "padroes_de_layout": [
+        "palavra-gancho gigante em 2 camadas (topo e base) com o produto sobreposto no centro",
+        "pizza vista de cima, recortada, sobre tábua com sombra suave",
+        "tarja pequena de 'pré-título' acima da manchete (ex.: 'PEÇA JÁ O SEU', 'NÃO PERCA TEMPO')",
+        "elementos voando com desfoque (folhas de manjericão) dando profundidade",
+        "selo circular de oferta (ex.: '15% DESCONTO') encostado na pizza",
+        "rodapé fixo: logo à esquerda, endereço/WhatsApp à direita"
+      ],
+      "melhor_para_oferta": {
+        "post": "linha 2, coluna 2 — 'SUA FOME PEDE PIZZA' com selo 15% DESCONTO",
+        "motivo": "único layout com selo de preço/benefício integrado à pizza e manchete emocional de apoio; hierarquia: gancho > produto > selo > CTA"
+      }
+    },
+    {
+      "id": "ref-02-paleta",
+      "tipo": "cartão de paleta de cores",
+      "paleta": [
+        { "nome": "Vampire Black", "hex": "#0E0204", "rgb": [14, 2, 4], "cmyk": [0, 86, 72, 95], "papel": "rodapé, tarjas, sombras, contraste máximo" },
+        { "nome": "Wine Red", "hex": "#A30E2B", "rgb": [163, 14, 43], "cmyk": [0, 91, 74, 36], "papel": "fundo principal (substitui o verde das referências)" },
+        { "nome": "Pink Lavender", "hex": "#DFBBCA", "rgb": [223, 187, 202], "cmyk": [0, 16, 10, 13], "papel": "tipografia gigante e selo de preço (substitui o creme)" },
+        { "nome": "Twilight Lavender", "hex": "#774972", "rgb": [119, 73, 114], "cmyk": [0, 39, 4, 53], "papel": "engrenagens decorativas, prato" },
+        { "nome": "Old Lavender", "hex": "#7C5D72", "rgb": [124, 93, 114], "cmyk": [0, 25, 8, 51], "papel": "texturas e camadas de fundo" }
+      ],
+      "tipografia": {
+        "titulos": {
+          "estilo": "serifada display de alto contraste com serifas em cunha, caixa alta",
+          "equivalentes": ["Gloock", "Young Serif", "Playfair Display SC"]
+        },
+        "rotulos": { "estilo": "sans geométrica pequena (HEX / RGB / CMYK)", "equivalentes": ["Poppins", "Satoshi"] }
+      }
+    },
+    {
+      "id": "ref-03-logo",
+      "tipo": "logotipo Rotaract Club de Varginha",
+      "cor_original": "#D2215F (cranberry/magenta Rotaract)",
+      "elementos": ["wordmark 'Rotaract' bold", "descritor 'Club de Varginha' light", "Roda Rotária: engrenagem de 24 dentes, 6 raios, rasgo de chaveta central"],
+      "tipografia": {
+        "estilo": "sans humanista (família Frutiger — fonte oficial da marca Rotary)",
+        "substitutos_web": ["Open Sans", "Hind", "Arial"]
+      },
+      "uso_no_post": [
+        "logo completo em branco no rodapé",
+        "selo de preço com o formato da engrenagem rotária",
+        "rodas gigantes no fundo em Twilight/Old Lavender",
+        "rodas pequenas 'voando' desfocadas no lugar das folhas de manjericão",
+        "roda girando como pattern na tarja"
+      ]
+    }
+  ],
+  "decisao_final": {
+    "tipografia": { "display": "Anton", "acento_serifado": "Gloock", "texto": "Open Sans (substituto da Frutiger)" },
+    "mapeamento_de_cor": { "verde→": "#A30E2B", "creme→": "#DFBBCA", "texto escuro→": "#0E0204", "detalhes→": ["#774972", "#7C5D72"] },
+    "copy": {
+      "pre_titulo": "PROJETO PIZZA SOLIDÁRIA",
+      "gancho": "PIZZA",
+      "produto": "PRÉ-ASSADA",
+      "apoio": "Sua fome faz o bem",
+      "selo": "SÓ R$ 45",
+      "cta": "Encomende já!"
+    }
+  }
+}
